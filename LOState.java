@@ -6,22 +6,23 @@ public class LOState
 
 	boolean[][] switches;
 	boolean win;
-	LinkedList<int> parents;
+	LinkedList<Integer> parents;
 
 	//init state, no previous
 	public LOState(boolean[][] switches)
 	{
 		this.switches = switches;
 		win = winCheck();
-		parents = new LinkedList<int>();
+		parents = new LinkedList<Integer>();
 		
 	}
 	
 	//normal states, with parent state
-	public LOState(boolean[][] switches, int parentLocation)
+	public LOState(boolean[][] switches, int parentLocation, LinkedList<Integer> ancestors)
 	{
 		this.switches = switches;
-		
+		this.parents = ancestors;
+		parents.add(new Integer(parentLocation));
 		win = winCheck();
 	}
 	
